@@ -1,0 +1,48 @@
+{% extends 'base.html'%}
+{%load static%}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Books</title>
+  <link rel="stylesheet" href="{% static 'book/css/book_list.css'%}">
+
+</head>
+<body>
+    <h1>Books</h1>
+    {% if tag %}
+    <h2>Books tagged with "{{ tag.name }}"</h2>
+  {% endif %}
+
+
+ 
+  
+    <div class="container">
+    
+      {% for book in books %}
+      <div class="product">
+        <p>        Tags:
+          {% for tag in book.tags.all %}
+     <a href="{% url 'book_list_by_tag' tag.slug %}">
+              {{ tag.name }}
+     </a>
+            {% if not forloop.last %}, {% endif %}
+          {% endfor %}</p>
+        <img src="{{ book.image.url }}" alt="Product 1">
+        <div class="product-name">{{ book.title }}</div>
+        <button type="submit"><a href="{% url 'book_detail' book_id=book.id %}">Show</a></button>
+        {% if user.is_staff %}
+          <button class="b2" type="submit"><a href="{% url 'delete' pk=book.id %}">Delete</a></button>
+          <button  type="submit"><a href="{% url 'edit' pk=book.id %}">Edit</a></button>
+        {% endif %}
+      </div>
+      {% endfor %}
+      {% include "pagination.html" with page=books %}
+
+  
+    </div>
+</body>
+</html>
+
+{% endblock content %}
+

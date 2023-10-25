@@ -1,0 +1,24 @@
+{% extends 'base.html'  %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Return Book</title>
+<link rel="stylesheet" href="{% static 'students/css/return_book.css'%}">
+</head>
+<body>
+  <div class="return-book">
+    <h1>Return Book</h1>
+    <p>Book: {{ borrowed_book.book.title }}</p>
+    <form method="post">
+      {% csrf_token %}
+      <p>Are you sure you want to return this book?</p>
+      <input type="submit" value="Return Book">
+    </form>
+    <a href="{% url 'borrowed_books' %}">Back to Dashboard</a>
+  </div>
+</body>
+</html>
+{% endblock content %}

@@ -1,0 +1,70 @@
+{% extends 'base.html'  %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        button[type="submit"] {
+            background-color: #ccc;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 3px;
+            text-decoration: none;
+            color: #fff;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #999;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #000;
+            margin-top: 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            {% if user.is_staff %}
+                <p><a href="{% url 'admin_change_password' %}">Change Password</a></p>
+            {% endif %}
+            <button type="submit">Update</button>
+        </form>
+    </div>
+</body>
+</html>
+{% endblock content %}

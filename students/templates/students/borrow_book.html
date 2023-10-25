@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <p>Are you sure you want to borrow {{book.title}}</p>
+    <button type="submit" class="btn btn-danger">Borrow</button>
+    <a href="{% url 'book_list' %}" class="btn btn-dark">Cancel</a>
+  </form>
+{% endblock %}

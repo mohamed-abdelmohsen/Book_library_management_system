@@ -1,0 +1,42 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>product details</title>
+  <link rel="stylesheet" href="{% static 'book/css/book_details.css' %}">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+  <div id="container">
+   
+    <img src="{{book.image.url}}" alt="{{ book.name}}">
+    <div class="product_name">{{ object.title}}</div>
+    
+
+    <div class="product_description">Bood id : {{book.id}}</div>
+    <div class="product_description">Book author :{{book.author}}</div>
+    <div class="product_description">Is available :{{book.is_available}}</div>
+    <div class="bs">
+     <button type="submit"><a href="{%url 'borrow_book' book_id=book.id %}">Borrow</a></button>
+
+     <h2>Similar books</h2>
+     {% for book in similar_books %}
+    <p>
+    <a href="{% url 'book_detail' book_id=book.id%}">{{ book.title }}</a>
+    </p>
+     {% empty %}
+       There are no similar books yet.
+     {% endfor %}
+    </div>
+   
+    
+    
+  </div>
+  {% endblock content %}
+</body>
+</html>

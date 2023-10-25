@@ -1,0 +1,46 @@
+.return-book {
+    border: 1px solid #ccc;
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .return-book h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .return-book p {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .return-book form {
+    margin-top: 20px;
+  }
+  
+  .return-book form p {
+    margin-bottom: 10px;
+  }
+  
+  .return-book form input[type="submit"] {
+    background-color: #ccc;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .return-book form input[type="submit"]:hover {
+    background-color: #999;
+  }
+  
+  .return-book a {
+    display: block;
+    margin-top: 20px;
+    text-decoration: none;
+  }

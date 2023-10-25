@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    /* Global styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Header styles */
+    .navbar {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+    }
+
+    .navbar-header {
+      display: inline-block;
+    }
+
+    .navbar-brand {
+      color: #fff;
+      font-size: 24px;
+      font-weight: bold;
+      text-decoration: none;
+      margin-right: 20px;
+    }
+
+    .navbar-nav {
+      display: inline-block;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar-nav li {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .navbar-nav li a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .navbar-nav li.active a {
+      font-weight: bold;
+    }
+
+    .navbar-right {
+      float: right;
+    }
+
+    .navbar-right li {
+      display: inline-block;
+      margin-left: 10px;
+    }
+
+    .navbar-right li a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .glyphicon {
+      margin-right: 5px;
+    }
+
+    /* User list styles */
+    .user-list {
+      margin-top: 20px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .user-list-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .user-list-item .username {
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    .user-list-item button {
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 3px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .user-list-item button a {
+      color: #fff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="{% url 'profile' %}">Profile</a>
+    </div>
+    <ul class="navbar-nav">
+      <li class="active"><a href="/book/books/">Books</a></li>
+      <li><a href="">About Us</a></li>
+      <li><a href="">Contact Us</a></li>
+    </ul>
+    <ul class="navbar-nav navbar-right">
+      {% if user.is_authenticated %}
+      Welcome {{ user.username }}
+      <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
+      {% else %}
+      <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a href="{% url 'register' %}"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+  
+  <ul class="user-list">
+    {% for object in object_list %}
+    <li class="user-list-item">
+      <span class="username">{{ object.username }}</span>
+      <button type="submit"><a href="{% url 'user_details' pk=object.id %}">Details</a></button>
+    </li>
+    {% endfor %}
+  </ul>
+</body>
+
+</html>
