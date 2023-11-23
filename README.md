@@ -6,7 +6,7 @@ The Book Management System is a platform designed to help users manage their boo
 ## Installation
 To install the Book Management System, follow these steps:
 1. Clone the repository.
-2. Open a new terminal and Install project requirments  using `pip install requirements.txt`.
+2. Open a new terminal and Install project requirments  using `pip install -r requirements.txt`.
 3. Configure the database settings in `settings.py`.
 4. Run the system using `python manage.py runserver`.
 
