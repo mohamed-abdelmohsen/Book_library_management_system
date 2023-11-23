@@ -21,6 +21,8 @@ Once installed, users can access the system through the web interface at `http:/
 - Borrow books and return it back again to the shelf.
 - Show all borrowed books
 - Pagination system
+- Show similar books
+  
   
 
 ## Features as a superuser
